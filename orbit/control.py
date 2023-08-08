@@ -37,3 +37,22 @@ def mouse_updown(button: str, up: bool):
         mouse_up(button)
     else:
         mouse_down(button)
+
+
+def key_down(key: str):
+    pyautogui.keyDown(key)
+
+
+def key_up(key: str):
+    pyautogui.keyUp(key)
+
+
+def key_press(key: str):
+    pyautogui.press(key)
+
+
+def key_updown(key: str, up: bool):
+    if up:
+        key_up(key)
+    else:
+        key_down(key)
