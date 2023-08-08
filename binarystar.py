@@ -36,12 +36,14 @@ while True:
         if isinstance(event, OrbitButtonEvent):
             if event.bystick:
                 continue
-            if event.button == OrbitButtonType.LEFT:
-                mouse_updown(MOUSE_BUTTON_LEFT, not event.pressed)
-            elif event.button == OrbitButtonType. RIGHT:
-                mouse_updown(MOUSE_BUTTON_RIGHT, not event.pressed)
-            elif event.button == OrbitButtonType.CENTER:
-                mouse_updown(MOUSE_BUTTON_MIDDLE, not event.pressed)
+            match event.button:
+                case OrbitButtonType.LEFT:
+                    mouse_updown(MOUSE_BUTTON_LEFT, not event.pressed)
+                case OrbitButtonType. RIGHT:
+                    mouse_updown(MOUSE_BUTTON_RIGHT, not event.pressed)
+                case OrbitButtonType.CENTER:
+                    mouse_updown(MOUSE_BUTTON_MIDDLE, not event.pressed)
+                case _: pass
 
     if state.length > state.setting.deadzone:
         x = copysign(state.x ** acceleration_dimension *
